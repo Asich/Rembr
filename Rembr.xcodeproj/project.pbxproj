@@ -28,6 +28,7 @@
 		7B44C2D71E0CEFAB00438396 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7B44C2D91E0D0CE300438396 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7B8C4E701E12694B009F7C51 /* changelog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changelog.swift; sourceTree = "<group>"; };
+		7BB14C271E14BD0F00336DEA /* Rembr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rembr.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +303,7 @@
 		7B44C2C71E0CEDC700438396 /* SwiftCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7BB14C271E14BD0F00336DEA /* Rembr.xcdatamodel */,
 				7B44C2C81E0CEDC700438396 /* SwiftCoreData.xcdatamodel */,
 			);
 			currentVersion = 7B44C2C81E0CEDC700438396 /* SwiftCoreData.xcdatamodel */;
