@@ -9,6 +9,7 @@
 import Cocoa
 
 class CoreDataHelper {
+    
 
     /**
         Fetch all instance of provided entity
@@ -23,17 +24,17 @@ class CoreDataHelper {
         
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
 
         do {
             
             let results = try managedContext.fetch(fetchRequest)
             
-            
-            
             if callback != nil {
-                callback!(results as! [NSManagedObject])
+                callback!(sortNotes(result: results as! [NSManagedObject] as! [Note]))
             }
+            
             
         } catch let error as NSError {
             
@@ -43,10 +44,15 @@ class CoreDataHelper {
         
     }
     
-    func sortResult(result: [NSManagedObject])  {
+    static func sortNotes(result: [Note]) -> [Note] {
         
+        return result.sorted { (item1, item2) -> Bool in
             
-        
+            let t1 = item1.dateAdded ?? Date.distantPast
+            let t2 = item2.dateAdded ?? Date.distantPast
+            
+            return t1 > t2
+        }
     }
 
     /**
@@ -63,13 +69,13 @@ class CoreDataHelper {
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
 
-        let entity =  NSEntityDescription.entity(forEntityName: "Word", in:managedContext)
+        let entity =  NSEntityDescription.entity(forEntityName: "Note", in:managedContext)
         let word = NSManagedObject(entity: entity!, insertInto: managedContext)
 
         word.setValue(enWord, forKey: "enword")
         word.setValue(ruWord, forKey: "ruword")
         
-        word.setValue(NSDate(), forKey: "creationDate")
+        word.setValue(NSDate(), forKey: "dateAdded")
 
         do {
 
@@ -83,6 +89,7 @@ class CoreDataHelper {
             print("Could not save")
         }
     }
+    
     
     static func delete(word : NSManagedObject, callback : (() -> ())?) {
 

@@ -20,7 +20,7 @@ class ViewController: NSViewController {
 
         super.viewDidLoad()
 
-        CoreDataHelper.fetch(entity: "Word") { [unowned self] objects in
+        CoreDataHelper.fetch(entity: "Note") { [unowned self] objects in
 
             self.words = objects
             self.tableView.reloadData()
@@ -58,7 +58,7 @@ class ViewController: NSViewController {
 
                     CoreDataHelper.delete(word: words[index], callback: nil)
 
-                    CoreDataHelper.fetch(entity: "Word") { [unowned self] objects in
+                    CoreDataHelper.fetch(entity: "Note") { [unowned self] objects in
 
                         self.words = objects
                         self.tableView.reloadData()
@@ -81,7 +81,7 @@ class ViewController: NSViewController {
 
             }
 
-            CoreDataHelper.fetch(entity: "Word") { [unowned self] objects in
+            CoreDataHelper.fetch(entity: "Note") { [unowned self] objects in
 
                 self.words = objects
                 self.tableView.reloadData()
@@ -115,6 +115,7 @@ class ViewController: NSViewController {
 
 }
 
+//MARK: - Tableview delegate and datasource
 
 extension ViewController : NSTableViewDataSource {
     
