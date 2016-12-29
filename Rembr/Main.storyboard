@@ -23,7 +23,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="3Sg-WW-NaO" kind="modal" id="WKW-mR-Gju"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Hide Rembr" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
@@ -303,7 +307,7 @@ CA
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -488,6 +492,64 @@ CA
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="666"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="3k4-gc-a6J">
+            <objects>
+                <windowController id="3Sg-WW-NaO" sceneMemberID="viewController">
+                    <window key="window" title="Rembr" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Jfz-Ll-k9K">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                    </window>
+                    <connections>
+                        <segue destination="LtO-Xa-P71" kind="relationship" relationship="window.shadowedContentViewController" id="YHJ-aQ-lTr"/>
+                    </connections>
+                </windowController>
+                <customObject id="oBB-UA-wIY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="647" y="214"/>
+        </scene>
+        <!--Rembr Preferences-->
+        <scene sceneID="7Yr-D9-69q">
+            <objects>
+                <viewController title="Rembr Preferences" id="LtO-Xa-P71" customClass="SettingsViewController" customModule="Rembr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aqy-I0-Bpa">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j68-j5-qiX">
+                                <rect key="frame" x="31" y="261" width="187" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Notification interval (minutes):" id="fLZ-1b-Wq3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHw-5J-L42">
+                                <rect key="frame" x="228" y="256" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="minutes" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="cks-J7-AJv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                                <connections>
+                                    <outlet property="dataSource" destination="LtO-Xa-P71" id="owf-fv-Oj5"/>
+                                    <outlet property="delegate" destination="LtO-Xa-P71" id="V1v-39-kvl"/>
+                                </connections>
+                            </comboBox>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="intervalCombobox" destination="nHw-5J-L42" id="NFL-f6-GWr"/>
+                    </connections>
+                </viewController>
+                <customObject id="388-Z1-ZrN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="647" y="674"/>
         </scene>
     </scenes>
 </document>

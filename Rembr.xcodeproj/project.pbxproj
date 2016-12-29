@@ -14,6 +14,7 @@
 		7B44C2CB1E0CEDC700438396 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B44C2CA1E0CEDC700438396 /* Assets.xcassets */; };
 		7B44C2D81E0CEFAB00438396 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B44C2D71E0CEFAB00438396 /* Main.storyboard */; };
 		7B44C2DA1E0D0CE300438396 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B44C2D91E0D0CE300438396 /* NotificationManager.swift */; };
+		7B5C996D1E1522690057FDF6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C996C1E1522690057FDF6 /* SettingsViewController.swift */; };
 		7B8C4E711E12694B009F7C51 /* changelog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C4E701E12694B009F7C51 /* changelog.swift */; };
 		7BB14C321E14CA8900336DEA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB14C301E14CA8900336DEA /* Note.swift */; };
 		7BB14C331E14CA8900336DEA /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB14C311E14CA8900336DEA /* Note+CoreDataProperties.swift */; };
@@ -29,6 +30,7 @@
 		7B44C2CF1E0CEDC700438396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B44C2D71E0CEFAB00438396 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7B44C2D91E0D0CE300438396 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		7B5C996C1E1522690057FDF6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7B8C4E701E12694B009F7C51 /* changelog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = changelog.swift; sourceTree = "<group>"; };
 		7BB14C271E14BD0F00336DEA /* Rembr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rembr.xcdatamodel; sourceTree = "<group>"; };
 		7BB14C301E14CA8900336DEA /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Rembr/Note.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				7B44C2D91E0D0CE300438396 /* NotificationManager.swift */,
 				7B2A59861E1210C60032E7A2 /* CoreDataHelper.swift */,
 				7B8C4E701E12694B009F7C51 /* changelog.swift */,
+				7B5C996C1E1522690057FDF6 /* SettingsViewController.swift */,
 			);
 			path = Rembr;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				7B44C2C91E0CEDC700438396 /* SwiftCoreData.xcdatamodeld in Sources */,
 				7B44C2DA1E0D0CE300438396 /* NotificationManager.swift in Sources */,
 				7B44C2C41E0CEDC700438396 /* AppDelegate.swift in Sources */,
+				7B5C996D1E1522690057FDF6 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

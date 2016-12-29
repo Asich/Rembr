@@ -12,17 +12,38 @@ class NotificationManager: NSObject {
 
     
     var didStart : Bool = false
+    var timer : Timer?
+    
     
     func start() {
         
         if (!didStart) {
-            Timer.scheduledTimer(timeInterval: 600, target: self, selector: #selector(self.fire), userInfo: nil, repeats: true)
+            
+            let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationInterval)
+            
+            let interval = selectedItem * 60
+            
+            timer = Timer.scheduledTimer(timeInterval: Double(interval), target: self, selector: #selector(self.fire), userInfo: nil, repeats: true)
+            
             didStart = true
+            
+            
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.intervalChanged), name: NSNotification.Name(rawValue: "NotificationIntervalChanged"), object: nil)
+            
+            
         }
         
     }
     
+    func intervalChanged() {
+        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationInterval)
+        let interval = selectedItem * 60
+        timer = Timer.scheduledTimer(timeInterval: Double(interval), target: self, selector: #selector(self.fire), userInfo: nil, repeats: true)
+    }
+    
     func stop() {
+        timer?.invalidate()
         didStart = false
     }
     
@@ -39,7 +60,7 @@ class NotificationManager: NSObject {
         let managedContext = appDelegate.managedObjectContext
         
         //2
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Word")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
         
         //3
         do {
