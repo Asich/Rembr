@@ -1,2 +1,2 @@
 # Rembr
-MacOS app for remember words
+MacOS app for remembering words
