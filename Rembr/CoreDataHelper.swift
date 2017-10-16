@@ -43,7 +43,14 @@ class CoreDataHelper {
         }
         
     }
-    
+
+    /**
+        Sort notes ascending
+
+        - Parameter result:
+
+        - Returns: [Note]: array of Notes
+    */
     static func sortNotes(result: [Note]) -> [Note] {
         
         return result.sorted { (item1, item2) -> Bool in
@@ -89,8 +96,15 @@ class CoreDataHelper {
             print("Could not save")
         }
     }
-    
-    
+
+  /**
+      Remove word from database
+
+      - Parameter word:
+      - Parameter callback:
+
+      - Returns: void
+  */
     static func delete(word : NSManagedObject, callback : (() -> ())?) {
 
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
@@ -113,6 +127,13 @@ class CoreDataHelper {
         }
     }
 
+    /**
+        Drop entity from database
+
+        - Parameter entity: string representation on class naem
+
+        - Returns: void
+    */
     static func deleteAll(entity : String) {
 
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
