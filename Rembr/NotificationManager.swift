@@ -17,7 +17,7 @@ class NotificationManager: NSObject {
     
     func start() {
         
-        if (!didStart) {
+        if !didStart {
             
             let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
             
@@ -41,13 +41,18 @@ class NotificationManager: NSObject {
     }
     
     func intervalChanged() {
-        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
-        let interval = selectedItem * 60
-        timer = Timer.scheduledTimer(timeInterval: Double(interval),
-            target: self,
-            selector: #selector(self.fire),
-            userInfo: nil,
-            repeats: true)
+        if didStart {
+            stop()
+            let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
+            let interval = selectedItem * 60
+            timer = Timer.scheduledTimer(timeInterval: Double(interval),
+                target: self,
+                selector: #selector(self.fire),
+                userInfo: nil,
+                repeats: true)
+            didStart = true
+        }
+
     }
     
     func stop() {
