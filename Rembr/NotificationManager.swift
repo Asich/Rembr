@@ -19,27 +19,35 @@ class NotificationManager: NSObject {
         
         if (!didStart) {
             
-            let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationInterval)
+            let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
             
             let interval = selectedItem * 60
             
-            timer = Timer.scheduledTimer(timeInterval: Double(interval), target: self, selector: #selector(self.fire), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: Double(interval),
+                target: self,
+                selector: #selector(self.fire),
+                userInfo: nil,
+                repeats: true)
             
             didStart = true
-            
-            
-            
-            NotificationCenter.default.addObserver(self, selector: #selector(self.intervalChanged), name: NSNotification.Name(rawValue: "NotificationIntervalChanged"), object: nil)
-            
+
+            NotificationCenter.default.addObserver(self,
+                selector: #selector(self.intervalChanged),
+                name: NSNotification.Name(rawValue: SettingsConstants.kNotificationCenterIntervalChanged),
+                object: nil)
             
         }
         
     }
     
     func intervalChanged() {
-        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationInterval)
+        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
         let interval = selectedItem * 60
-        timer = Timer.scheduledTimer(timeInterval: Double(interval), target: self, selector: #selector(self.fire), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: Double(interval),
+            target: self,
+            selector: #selector(self.fire),
+            userInfo: nil,
+            repeats: true)
     }
     
     func stop() {

@@ -10,7 +10,8 @@ import Cocoa
 
 
 struct SettingsConstants {
-    static let kNotificationInterval = "kNotificationInterval"
+    static let kNotificationIntervalKey = "kNotificationInterval"
+    static let kNotificationCenterIntervalChanged = "NotificationIntervalChanged"
 }
 
 
@@ -38,7 +39,7 @@ class SettingsViewController: NSViewController {
         }
         
         //select item in combobox (default will be 20)
-        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationInterval)
+        let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
         
         print("selectedItem: \(selectedItem)")
         if selectedItem == 0 {
@@ -56,9 +57,9 @@ extension SettingsViewController : NSComboBoxDelegate, NSComboBoxDataSource {
     
     public func comboBoxSelectionDidChange(_ notification: Notification) {
         let selectedItem = (possibleNotificationIntervals[intervalCombobox.indexOfSelectedItem])
-        UserDefaults.standard.set(selectedItem, forKey: SettingsConstants.kNotificationInterval)
+        UserDefaults.standard.set(selectedItem, forKey: SettingsConstants.kNotificationIntervalKey)
         UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIntervalChanged"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SettingsConstants.kNotificationCenterIntervalChanged), object: nil)
     }
     
     

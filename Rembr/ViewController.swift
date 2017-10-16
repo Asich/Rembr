@@ -31,12 +31,9 @@ class ViewController: NSViewController {
         not.start()
         
         handleDeleteMenuButton()
-        
-        
     }
     
     //MARK: - config actions
-
     
     func handleDeleteMenuButton() {
         let appDelegate = NSApplication.shared().delegate as! AppDelegate
@@ -122,9 +119,7 @@ extension ViewController : NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         return words.count 
     }
-    
-    
-    
+
 }
 
 extension ViewController : NSTableViewDelegate {
