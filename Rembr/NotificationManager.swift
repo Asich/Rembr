@@ -21,7 +21,7 @@ class NotificationManager: NSObject {
             
             let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
             
-            let interval = selectedItem * 60
+            let interval = (selectedItem == 0 ? 1 : selectedItem) * 60
             
             timer = Timer.scheduledTimer(timeInterval: Double(interval),
                 target: self,
@@ -60,10 +60,9 @@ class NotificationManager: NSObject {
         didStart = false
     }
     
-    func fire() {                
-        
-        let word = fetchRandomPair()
-        postNotification(word: word!)
+    func fire() {
+        guard let word = fetchRandomPair() else { return }
+        postNotification(word: word)
     }
     
     func fetchRandomPair() -> NSManagedObject? {
@@ -81,9 +80,11 @@ class NotificationManager: NSObject {
             let results = try managedContext.fetch(fetchRequest)
             let words = results as! [NSManagedObject]
             let randomIndex = Int(arc4random_uniform(UInt32(words.count)))
-            let randomWord = words[randomIndex]
+            if let randomWord = words[safe: randomIndex] {
+                return randomWord
+            }
             
-            return randomWord
+            return nil
             
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
