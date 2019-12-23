@@ -40,7 +40,7 @@ class NotificationManager: NSObject {
         
     }
     
-    func intervalChanged() {
+    @objc func intervalChanged() {
         if didStart {
             stop()
             let selectedItem = UserDefaults.standard.integer(forKey: SettingsConstants.kNotificationIntervalKey)
@@ -60,14 +60,14 @@ class NotificationManager: NSObject {
         didStart = false
     }
     
-    func fire() {
+    @objc func fire() {
         guard let word = fetchRandomPair() else { return }
         postNotification(word: word)
     }
     
     func fetchRandomPair() -> NSManagedObject? {
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         

@@ -36,7 +36,7 @@ class ViewController: NSViewController {
     //MARK: - config actions
     
     func handleDeleteMenuButton() {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.onDeleteItemClick = {
             self.removeRow()
         }
@@ -103,7 +103,7 @@ class ViewController: NSViewController {
         let myPopup: NSAlert = NSAlert()
         myPopup.messageText = question
         myPopup.informativeText = text
-        myPopup.alertStyle = NSAlertStyle.warning
+        myPopup.alertStyle = NSAlert.Style.warning
         myPopup.addButton(withTitle: "OK")
         myPopup.addButton(withTitle: "Cancel")
         myPopup.runModal()
@@ -152,7 +152,7 @@ extension ViewController : NSTableViewDelegate {
         
         
         //returning cell
-        if let cell = tableView.make(withIdentifier: cellIdentifier, owner: nil) as? NSTableCellView {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
             
             cell.textField?.stringValue = text
             

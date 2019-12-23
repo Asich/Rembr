@@ -45,7 +45,7 @@ class SettingsViewController: NSViewController {
         if selectedItem == 0 {
             intervalCombobox.selectItem(at: 4)
         } else {
-            intervalCombobox.selectItem(at:possibleNotificationIntervals.index(of:selectedItem)!)
+            intervalCombobox.selectItem(at:possibleNotificationIntervals.firstIndex(of:selectedItem)!)
         }
     }
     

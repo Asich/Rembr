@@ -22,7 +22,7 @@ class CoreDataHelper {
     */
     static func fetch(entity : String, callback : (([NSManagedObject]) -> ())?) {
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -73,7 +73,7 @@ class CoreDataHelper {
     */
     static func write(enWord: String, ruWord: String, callback : ((NSManagedObject) -> ())?) {
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
 
         let entity =  NSEntityDescription.entity(forEntityName: "Note", in:managedContext)
@@ -107,7 +107,7 @@ class CoreDataHelper {
   */
     static func delete(word : NSManagedObject, callback : (() -> ())?) {
 
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
 
         managedContext.delete(word)
@@ -136,7 +136,7 @@ class CoreDataHelper {
     */
     static func deleteAll(entity : String) {
 
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
 
         let managedContext = appDelegate.managedObjectContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
